@@ -118,6 +118,34 @@
       "category": "Food",
       "amount": "9000",
       "id": 18
+    },
+    {
+      "date": "2022-07-18",
+      "category": "Food",
+      "amount": "99",
+      "description": "Maize floor",
+      "id": 19
+    },
+    {
+      "date": "2022-07-20",
+      "category": "entertainment",
+      "amount": "400",
+      "description": "Watch movie",
+      "id": 20
+    },
+    {
+      "date": "2022-07-15",
+      "category": "Health",
+      "amount": "5",
+      "description": "Mask",
+      "id": 21
+    },
+    {
+      "date": "2022-07-12",
+      "category": "Food",
+      "amount": "30",
+      "description": "Soda",
+      "id": 22
     }
   ]
 }

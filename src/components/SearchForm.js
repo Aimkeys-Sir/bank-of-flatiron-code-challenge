@@ -1,10 +1,17 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSearch} from "@fortawesome/free-solid-svg-icons"
-export default function SearchForm(){
+import {useState} from "react"
+
+export default function SearchForm({onSearching}){
+    const [search,setSearch]=useState("")
+    function handleChange(e){
+        setSearch(e.target.value)
+        onSearching(search)
+    }
     return (
-            <form id="search-form">
-                <input id="search" placeholder="Search Transanctions..." type={"text"}/>
-                <button><FontAwesomeIcon icon={faSearch}/></button>
-            </form>
+        <form onChange={handleChange} id="search-form">
+            <input value={search} type={"text"} id="search" placeholder="Search recent transactions..."/>
+            <button><FontAwesomeIcon icon={faSearch}/></button>
+        </form>
     )
 }
