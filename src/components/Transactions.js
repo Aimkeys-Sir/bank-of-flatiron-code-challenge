@@ -19,8 +19,9 @@ function Transactions() {
                     <th>AMOUNT</th>
                 </tr>
                 {/* trs */}
-                {transactions.map(transaction=>{
+                {transactions.map((transaction,index)=>{
                     return <TransactionItem 
+                    index={index}
                     date={transaction.date}
                     category={transaction.category}
                     description={transaction.description}
