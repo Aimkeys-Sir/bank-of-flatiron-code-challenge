@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# Bank of Flatiron
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Bank of Flatiron, where you can trust us with all your financial
+data! Use the below gif as an example of how the app should function.
 
-## Available Scripts
+![demo](https://curriculum-content.s3.amazonaws.com/phase-2/phase-2-code-challenge-bank-of-flatiron/demo.gif)
 
-In the project directory, you can run:
+> To view in VSCode, right click on the README.md file and select "Open Preview".
 
-### `npm start`
+## Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For this project, you’ll be building out a React application that displays a
+list of your recent bank transactions, among other features.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Part of what this code challenge is testing is your ability to follow given
+instructions. While you will definitely have a significant amount of freedom in
+how you implement the features, be sure to carefully read the directions for
+setting up the application.
 
-### `npm test`
+## Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After unbundling the project:
 
-### `npm run build`
+1. Run `npm install` in your terminal.
+2. Run `npm run server`. This will run your backend on port `8001`.
+3. In a new terminal, run `npm start`. This will run your React app on port `8000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Make sure to open
+[http://localhost:8001/transactions](http://localhost:8001/transactions) in the
+browser to verify that your backend is working before you proceed!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The app uses [Semantic UI](https://semantic-ui.com/) for styling. If you see any
+unfamiliar classNames on some components, don't sweat! That's coming from
+Semantic UI and you shouldn't need to touch it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you are unfamiliar with HTML tables, take a look at the
+[docs with an example here](https://www.w3schools.com/html/html_tables.asp)
 
-### `npm run eject`
+## Endpoints
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The base URL for your backend is: `http://localhost:8001`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Core Deliverables
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+As a user, I should be able to:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- See a table of the transactions.
+- Fill out and submit the form to add a new transaction. This should add the new
+  transaction to the table **as well as post the new transaction to the backend
+  API for persistence**.
+- Filter transactions by typing into the search bar. Only transactions with a
+  description matching the search term should be shown in the transactions
+  table.
 
-## Learn More
+### Endpoints for Core Deliverables
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### GET /transactions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Example Response:
 
-### Code Splitting
+```json
+[
+  {
+    "id": 1,
+    "date": "2019-12-01",
+    "description": "Paycheck from Bob's Burgers",
+    "category": "Income",
+    "amount": 1000
+  },
+  {
+    "id": 2,
+    "date": "2019-12-01",
+    "description": "South by Southwest Quinoa Bowl at Fresh & Co",
+    "category": "Food",
+    "amount": -10.55
+  }
+]
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### POST `/transactions`
 
-### Analyzing the Bundle Size
+Required Headers:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```js
+{
+  "Content-Type": "application/json"
+}
+```
 
-### Making a Progressive Web App
+Request Object:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```json
+{
+  "date": "string",
+  "description": "string",
+  "category": "string",
+  "amount": number
+}
+```
 
-### Advanced Configuration
+Example Response:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```json
+{
+  "id": 1,
+  "date": "2019-12-01",
+  "description": "Paycheck from Bob's Burgers",
+  "category": "Income",
+  "amount": 1000
+}
+```
 
-### Deployment
+## Advanced Deliverables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+These deliverables are not required to pass the code challenge, but if you have
+the extra time, or even after the code challenge, they are a great way to
+stretch your skills.
 
-### `npm run build` fails to minify
+> Note: If you are going to attempt these advanced deliverables, please be sure
+> to have a working commit with all the Core Deliverables first!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+As a user, I should be able to:
+
+- Sort transactions alphabetically by category or description.
+- Delete a transaction which will remove it from the table and delete it from the backend.
+
+### Endpoints for Advanced Deliverables
+
+#### DELETE /transactions/:id
+
+Example Response:
+
+```json
+{}
+```
