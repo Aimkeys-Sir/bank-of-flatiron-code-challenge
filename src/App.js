@@ -14,7 +14,7 @@ function App() {
     .then(transactions=>{
       setTransactions(transactions.filter(transaction=>searchFilter===""?true:transaction.description.includes(searchFilter)))
     })
-  },[searchFilter,transactions])
+  },[searchFilter])
   function handleUpdateOnSubmission(newTransaction){
     const serverOptions={
       method:"POST",
@@ -40,7 +40,7 @@ console.log()
       </div>
       <SearchForm onSearching={handleOnSearching}/>
       <NewTransactionForm onSubmission={handleUpdateOnSubmission} />
-      <Transactions transactions={filteredTransactions}/>
+      <Transactions transactions={transactions}/>
 
     </div>
   );

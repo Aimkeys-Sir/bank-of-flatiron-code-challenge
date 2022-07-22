@@ -9,8 +9,8 @@ export default function SearchForm({onSearching}){
         onSearching(search)
     }
     return (
-        <form onChange={handleChange} id="search-form">
-            <input value={search} type={"text"} id="search" placeholder="Search recent transactions..."/>
+        <form  id="search-form">
+            <input onChange={handleChange} value={search} type={"text"} id="search" placeholder="Search recent transactions..."/>
             <button><FontAwesomeIcon icon={faSearch}/></button>
         </form>
     )

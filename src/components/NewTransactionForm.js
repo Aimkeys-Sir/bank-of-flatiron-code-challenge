@@ -21,13 +21,13 @@ export default function NewTransactionForm({onSubmission}){
         })
     }
     return(
-        <form onChange={handleChange}  onSubmit={handleSubmit} id="new-item-form">
+        <form onSubmit={handleSubmit} id="new-item-form">
             <div className="form-inputs">
                 <label htmlFor="date">Date:</label>
-                <input value={formData.date} name="date" type="date" id="date"/>
-                <input value={formData.description} name="description" className="text-input" type="text" placeholder="Description..."/>
-                <input value={formData.category} name="category" className="text-input" type="text" placeholder="Category..."/>
-                <input value={formData.amount} name="amount" type="number"/>
+                <input onChange={handleChange} value={formData.date} name="date" type="date" id="date"/>
+                <input onChange={handleChange} value={formData.description} name="description" className="text-input" type="text" placeholder="Description..."/>
+                <input onChange={handleChange} value={formData.category} name="category" className="text-input" type="text" placeholder="Category..."/>
+                <input onChange={handleChange} value={formData.amount} name="amount" type="number"/>
             </div>
             <button>Add Transaction</button>
         </form>
