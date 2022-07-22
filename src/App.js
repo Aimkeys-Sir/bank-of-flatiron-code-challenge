@@ -21,8 +21,11 @@ function App() {
     function handleChange(e){
         setSearchFilter(e.target.value)
     }
+    function handleSubmit(e){
+      e.preventDefault()
+    }
     return (
-        <form  id="search-form">
+        <form onSubmit={handleSubmit}  id="search-form">
             <input autoFocus onChange={handleChange} value={searchFilter} type={"text"} id="search" placeholder="Search recent transactions..."/>
             <button><FontAwesomeIcon icon={faSearch}/></button>
         </form>
