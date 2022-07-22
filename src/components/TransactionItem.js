@@ -1,6 +1,6 @@
-export default function TransactionItem({date,description,category,amount}){
+export default function TransactionItem({index,date,description,category,amount}){
     return (
-        <tr>
+        <tr className={index%2===0?"even":""}>
             <td>{date}</td>
             <td>{description}</td>
             <td>{category}</td>

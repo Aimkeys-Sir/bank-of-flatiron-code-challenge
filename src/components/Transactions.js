@@ -13,8 +13,9 @@ export default function Transactions({ transactions }) {
             </thead>
             <tbody>
                 {/* transaction items */}
-                {transactions.map(transaction => {
+                {transactions.map((transaction, index) => {
                     return <TransactionItem
+                        index={index}
                         date={transaction.date}
                         description={transaction.description}
                         amount={transaction.amount}
